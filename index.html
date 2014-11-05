@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<link rel='stylesheet' href='fullcalendar/lib/cupertino/jquery-ui.min.css' />
+<!--<link rel='stylesheet' href='fullcalendar/lib/cupertino/jquery-ui.min.css' />-->
+<link rel="stylesheet" href="themes/CampusLifeAndroid.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 <link href='fullcalendar/fullcalendar.css' rel='stylesheet' />
 <link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
 <script src='fullcalendar/lib/moment.min.js'></script>
@@ -16,9 +18,9 @@
 		$('#calendar').fullCalendar({
 			theme: true,
 			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
+				left: '',//'prev,next today',
+				center: '',//'title',
+				right: '',//'month,agendaWeek,agendaDay'
 			},
 			lang: 'en',
 			eventLimit: 4, // If you set a number it will hide the items
@@ -27,7 +29,7 @@
 			// Adjust calendar to changed window
 			windowResize: function(view) {
 				$('#calendar').fullCalendar('option', 'width', $(window).width());	
-				$('#calendar').fullCalendar('option', 'height', $(window).height());
+				$('#calendar').fullCalendar('option', 'height', $(window).height()-15);
 				//alert('Resized to ' + $(window).width() + 'x' + $(window).height());
 			},
 			
@@ -133,10 +135,7 @@
 </style>
 </head>
 <body>
-
 	<div id='loading'>loading...</div>
-
 	<div id='calendar'></div>
-
 </body>
 </html>
