@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<script src="js/jquery-2.1.1/jquery-2.1.1.js"></script>
+	<script src="js/jquery-ui-1.11.2/jquery-ui.js"></script>
 	<script src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<!-- end jQuery -->
 	
@@ -29,9 +30,9 @@
 		$('#calendar').fullCalendar({
 			theme: true,
 			header: {
-				left: '',//'prev,next today',
-				center: '',//'title',
-				right: '',//'month,agendaWeek,agendaDay'
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
 			},
 			lang: 'en',
 			eventLimit: 4, // If you set a number it will hide the items
@@ -40,7 +41,7 @@
 			// Adjust calendar to changed window
 			windowResize: function(view) {
 				$('#calendar').fullCalendar('option', 'width', $(window).width());	
-				$('#calendar').fullCalendar('option', 'height', $(window).height()-15);
+				$('#calendar').fullCalendar('option', 'height', $(window).height());
 				//alert('Resized to ' + $(window).width() + 'x' + $(window).height());
 			},
 			
@@ -102,7 +103,10 @@
 				$.fullCalendar.gcalFeed('http://www.google.com/calendar/feeds/d6jbgjhudph2mpef1cguhn4g9g%40group.calendar.google.com/public/basic'),
 				*/
 			],
+			
+			
 			/*
+			//Events in new window (clunky)
 			eventClick: function(event) {
 				opens events in a popup window
 				window.open(event.url, 'gcalevent', 'width=700,height=600');
@@ -110,11 +114,20 @@
 			},
 			*/
 			
+			
+			//Events in an alert (no URL functionality)
 			eventClick: function(calEvent, jsEvent, view) {
-			alert(calEvent.title + '\n' + 'Summary: \n' + calEvent.summary);
-			return false;
+				alert(calEvent.title + '\n\n' + calEvent.description);
+				return false;
 			},
 			
+			
+			/*
+			function() {
+				$( 'Hello!' ).dialog();
+				return false;
+			},
+			*/
 			loading: function(bool) {
 				$('#loading').toggle(bool);
 			}
@@ -140,7 +153,7 @@
 	
 	#calendar {
 		max-width: 1920px;
-		margin: 0 auto;
+		margin: 0px auto;
 	}
 
 </style>
@@ -148,5 +161,7 @@
 <body>
 	<div id='loading'>loading...</div>
 	<div id='calendar'></div>
+</div>
+</div>
 </body>
 </html>
