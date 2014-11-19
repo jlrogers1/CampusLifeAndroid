@@ -97,7 +97,7 @@
 	#scroll-content {
 		position:absolute; 
 		z-index:1;
-		top:45px; bottom:0px; left:0;
+		top:45px; bottom:54px; left:0;
 		width:100%;
 		padding:0;
 		-webkit-overflow-scrolling:touch;
@@ -116,7 +116,7 @@
 	#scroll-content-cal {
 		position:absolute; 
 		z-index:1;
-		top:45px; bottom:54px; left:0;
+		top:0px; bottom:0px; left:0;
 		width:100%;
 		padding:0;
 		-webkit-overflow-scrolling:touch;
@@ -129,7 +129,7 @@
 	<!-- header -->
 	<div data-role="header" data-position="fixed">
 		<h1>Dec '14</h1>
-		<a href="#myPanel" class="ui-btn ui-btn-right ui-icon-gear ui-btn-icon-left">Options</a>
+		<a href="#myPanel" class="ui-btn ui-btn-right ui-icon-gear ui-btn-icon-left">Menu</a>
 	</div>
 	<!-- end header -->
 	
@@ -155,8 +155,7 @@
 	<!-- options panel -->
 	<div data-role="panel" id="myPanel" data-position="right" data-display="overlay"> 
 		<div data-role="header" data-position="fixed">
-			<h1>Options</h1>
-			<a href="#" data-rel="close" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline">DONE</a>
+			<h1>Settings</h1>
 		</div>
 		<div id="wrapper">
 			<div id="scroll-content">
@@ -202,6 +201,11 @@
 					</div>
 				</div>
 			</div>    
+		</div>
+		<div data-role="footer" data-position="fixed" style="text-align:center;">
+			<div data-role="controlgroup" data-type="horizontal">
+				<a href="#" data-rel="close" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline">DONE</a>
+			</div>
 		</div>
 	</div> 
 	<!-- end options panel -->
