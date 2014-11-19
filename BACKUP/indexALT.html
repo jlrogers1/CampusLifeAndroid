@@ -32,6 +32,13 @@
 			eventLimit: 0, // If you set a number it will hide the items
 			defaultView: 'month',
 			
+			// Adjust calendar to changed window
+			windowResize: function(view) {
+				$('#calendar').fullCalendar('option', 'width', $(window).width());	
+				$('#calendar').fullCalendar('option', 'height', $(window).height());
+				//alert('Resized to ' + $(window).width() + 'x' + $(window).height());
+			},
+			
 			//eventLimitText: "more", // Default is `more` (or "more" in the lang you pick in the option)
 			eventSources: [
 				// Academics
@@ -83,12 +90,10 @@
 	<!-- end setup the calendar -->
 	
 	<style>
-	<!-- http://jsfiddle.net/VNVqs/ -->
-		
 	#wrapper {
 		position:absolute; 
 		z-index:1;
-		top:0px; bottom:0px; left:0;
+		top:44px; bottom:53px; left:0;
 		width:100%;
 		background:#aaa;
 		overflow:auto;
@@ -97,32 +102,34 @@
 	#scroll-content {
 		position:absolute; 
 		z-index:1;
-		top:45px; bottom:0px; left:0;
 		width:100%;
 		padding:0;
 		-webkit-overflow-scrolling:touch;
 		overflow:auto;
 	}
 	
-	#wrapper-cal {
+	#wrapper-opt {
 		position:absolute; 
 		z-index:1;
-		top:0px; bottom:0px; left:0;
+		top:32px; bottom:0px; left:0;
 		width:100%;
-		background:#eee;
+		background:#ddd;
 		overflow:auto;
 	}
 
-	#scroll-content-cal {
+	#scroll-content-opt {
 		position:absolute; 
 		z-index:1;
-		top:45px; bottom:54px; left:0;
 		width:100%;
 		padding:0;
 		-webkit-overflow-scrolling:touch;
 		overflow:auto;
 	}
-
+	
+	#calendar {
+		width:100%;
+		margin: 0px auto;
+	}
 	</style>
 </head>
 <body>
@@ -134,13 +141,12 @@
 	<!-- end header -->
 	
 	<!-- calendar -->
-	<div id="wrapper-cal">
-		<div id="scroll-content-cal">
+	<div id="wrapper">
+		<div id="scroll-content">
 			<div id="calendar"></div>
-		</div>
+		</div>    
 	</div>
 	<!-- end calendar -->
-	
 	
 	<!-- footer -->
 	<div data-role="footer" data-position="fixed" style="text-align:center;">
@@ -158,8 +164,8 @@
 			<h1>Options</h1>
 			<a href="#" data-rel="close" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline">DONE</a>
 		</div>
-		<div id="wrapper">
-			<div id="scroll-content">
+		<div id="wrapper-opt">
+			<div id="scroll-content-opt">
 				<div data-role="main" class="ui-content">
 					<div data-mini="true" data-role="collapsible" data-iconpos="right">
 						<h1>Events Categories</h1>
