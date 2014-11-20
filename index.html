@@ -20,7 +20,7 @@
 	<!-- setup the calendar -->
 	<script type='text/javascript'>
 	$(document).ready(function() {
-	
+
 		$('#calendar').fullCalendar({
 			theme: true,
 			header: {
@@ -29,8 +29,15 @@
 				right: ''//'month,agendaWeek,agendaDay'
 			},
 			lang: 'en',
-			eventLimit: 0, // If you set a number it will hide the items
+			eventLimit: 4, // If you set a number it will hide the items
 			defaultView: 'month',
+			
+			// Adjust calendar to changed window
+			windowResize: function(view) {
+				$('#calendar').fullCalendar('option', 'width', $(window).width());	
+				$('#calendar').fullCalendar('option', 'height', $(window).height());
+				//alert('Resized to ' + $(window).width() + 'x' + $(window).height());
+			},
 			
 			//eventLimitText: "more", // Default is `more` (or "more" in the lang you pick in the option)
 			eventSources: [
@@ -71,16 +78,17 @@
 					textColor: 'white' // an option!
 				}
 			],
-			
 			//Events in an alert (no URL functionality)
 			eventClick: function(calEvent, jsEvent, view) {
 				alert(calEvent.title + '\n\n' + calEvent.description);
 				return false;
 			}
 		});
+		$('#calendar').fullCalendar('option', 'width', $(window).width());	
+		$('#calendar').fullCalendar('option', 'height', $(window).height());
 	});
-	</script>
 	<!-- end setup the calendar -->
+	</script>
 	
 	<style>
 	<!-- http://jsfiddle.net/VNVqs/ -->
@@ -116,7 +124,7 @@
 	#scroll-content-cal {
 		position:absolute; 
 		z-index:1;
-		top:0px; bottom:0px; left:0;
+		top:9px; bottom:54px; left:0;
 		width:100%;
 		padding:0;
 		-webkit-overflow-scrolling:touch;
@@ -147,7 +155,7 @@
 		<div data-role="controlgroup" data-type="horizontal">
 			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-inline">Prev</a>
 			<a href="#" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-inline">Today</a>
-			<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right ui-btn-inline">Next</a>
+			<a href="#" id="my-next-button" class="ui-btn ui-icon-arrow-r ui-btn-icon-right ui-btn-inline">Next</a>
 		</div>
 	</div>
 	<!-- end footer -->
