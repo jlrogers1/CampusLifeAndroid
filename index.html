@@ -22,22 +22,29 @@
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
 			theme: true,
-			//header: {
-			//	left: '',//'prev,next today',
-			//	center: '',//'title',
-			//	right: ''//'month,agendaWeek,agendaDay'
-			//},
+			header: {
+				left: '',//'prev,next today',
+				center: '',//'title',
+				right: ''//'month,agendaWeek,agendaDay'
+			},
 			lang: 'en',
 			eventLimit: 4, // If you set a number it will hide the items
 			eventLimitText: "more", // Default is `more` (or "more" in the lang you pick in the option)
 			defaultView: 'month',			
 			// Adjust calendar to changed window
-			windowResize: function(view) {
-				$('#calendar').fullCalendar('option', 'width', $(window).width());	
-				$('#calendar').fullCalendar('option', 'height', $(window).height());
+			windowResize: function(view) {	
+				$('#calendar').fullCalendar('option', 'height', $(window).height()-63);
+				$('#calendar').fullCalendar('option', 'width', $(window).width());
 				//alert('Resized to ' + $(window).width() + 'x' + $(window).height());
 			},
 			
+			viewRender: function(view) {
+				var element = document.getElementById("calendar-header");
+				var date = $("#calendar").fullCalendar('getDate');
+				element.innerHTML = date;
+			},
+			
+			height: $(window).height()-63,
 			// googleCalendarApiKey required post API v3
 			googleCalendarApiKey: 'AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
 			eventSources: [
@@ -87,15 +94,15 @@
 		
 		// Resize the calendar on load
 		//$('#calendar').fullCalendar('option', 'width', $(window).width());	
-		//$('#calendar').fullCalendar('option', 'height', $(window).height());
+		//$('#calendar').fullCalendar('option', 'height', $(window).height()-63);
 	});
 	<!-- end setup the calendar -->
 	</script>
 	
 	<style>
 	<!-- http://jsfiddle.net/VNVqs/ -->
-		
-	#wrapper {
+	
+	#panel-wrapper {
 		position:absolute; 
 		z-index:1;
 		top:0px; bottom:0px; left:0;
@@ -117,37 +124,36 @@
 	#wrapper-cal {
 		position:absolute; 
 		z-index:1;
-		top:0px; bottom:0px; left:0;
+		top:9px; bottom:0px; left:0;
 		width:100%;
 		background:#eee;
-		overflow:auto;
+		overflow-x: hidden;
+		overflow-y: hidden;
 	}
-
+	<!--
 	#scroll-content-cal {
 		position:absolute; 
 		z-index:1;
-		top:9px; bottom:54px; left:0;
+		top:0px; bottom:0px; left:0;
 		width:100%;
 		padding:0;
 		-webkit-overflow-scrolling:touch;
 		overflow:auto;
 	}
-
+	-->
 	</style>
 </head>
 <body>
 	<!-- header -->
 	<div data-role="header" data-position="fixed">
-		<h1>Dec '14</h1>
+		<h1 id='calendar-header'>PlaceHolder</h1>
 		<a href="#myPanel" class="ui-btn ui-btn-right ui-icon-gear ui-btn-icon-left">Menu</a>
 	</div>
 	<!-- end header -->
 	
 	<!-- calendar -->
 	<div id="wrapper-cal">
-		<div id="scroll-content-cal">
-			<div id="calendar"></div>
-		</div>
+		<div id="calendar"></div>
 	</div>
 	<!-- end calendar -->
 	
@@ -167,7 +173,7 @@
 		<div data-role="header" data-position="fixed">
 			<h1>Settings</h1>
 		</div>
-		<div id="wrapper">
+		<div id="panel-wrapper">
 			<div id="scroll-content">
 				<div data-role="main" class="ui-content">
 					<div data-mini="true" data-role="collapsible" data-iconpos="right">
