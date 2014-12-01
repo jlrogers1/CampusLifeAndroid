@@ -9,29 +9,28 @@
 	<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 	
 	<!-- FullCalendar -->
-	<link href='js/fullcalendar-2.1.1/fullcalendar.css' rel='stylesheet' />
-	<link href='js/fullcalendar-2.1.1/fullcalendar.print.css' rel='stylesheet' media='print' />
-	<script src='js/fullcalendar-2.1.1/lib/moment.min.js'></script>
-	<script src='js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
-	<script src='js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
-	<script src='js/fullcalendar-2.1.1/gcal.js'></script>
+	<link href='js/fullcalendar-2.2.3/fullcalendar.css' rel='stylesheet' />
+	<link href='js/fullcalendar-2.2.3/fullcalendar.print.css' rel='stylesheet' media='print' />
+	<script src='js/fullcalendar-2.2.3/lib/moment.min.js'></script>
+	<script src='js/fullcalendar-2.2.3/lib/jquery.min.js'></script>
+	<script src='js/fullcalendar-2.2.3/fullcalendar.min.js'></script>
+	<script src='js/fullcalendar-2.2.3/gcal.js'></script>
 	<!-- end FullCalendar -->
 	
 	<!-- setup the calendar -->
 	<script type='text/javascript'>
 	$(document).ready(function() {
-
 		$('#calendar').fullCalendar({
 			theme: true,
-			header: {
-				left: '',//'prev,next today',
-				center: '',//'title',
-				right: ''//'month,agendaWeek,agendaDay'
-			},
+			//header: {
+			//	left: '',//'prev,next today',
+			//	center: '',//'title',
+			//	right: ''//'month,agendaWeek,agendaDay'
+			//},
 			lang: 'en',
 			eventLimit: 4, // If you set a number it will hide the items
-			defaultView: 'month',
-			
+			eventLimitText: "more", // Default is `more` (or "more" in the lang you pick in the option)
+			defaultView: 'month',			
 			// Adjust calendar to changed window
 			windowResize: function(view) {
 				$('#calendar').fullCalendar('option', 'width', $(window).width());	
@@ -39,44 +38,45 @@
 				//alert('Resized to ' + $(window).width() + 'x' + $(window).height());
 			},
 			
-			//eventLimitText: "more", // Default is `more` (or "more" in the lang you pick in the option)
+			// googleCalendarApiKey required post API v3
+			googleCalendarApiKey: 'AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
 			eventSources: [
-				// Academics
-				{
-					url: 'https://www.googleapis.com/calendar/v3/calendars/0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com/events?singleEvents=true&key=AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
-					color: '#737373',   // an option!
-					textColor: 'white' // an option!
-				},
-				// Campus Rec
-				{
-					url: 'https://www.googleapis.com/calendar/v3/calendars/h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com/events?singleEvents=true&key=AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
-					color: '#227F63',   // an option!
-					textColor: 'white' // an option!
-				},
-				// Entertainment
-				{
-					url: 'https://www.googleapis.com/calendar/v3/calendars/m6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com/events?singleEvents=true&key=AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
-					color: '#871111',   // an option!
-					textColor: 'white' // an option!
-				},
-				// Residence Life
-				{
-					url: 'https://www.googleapis.com/calendar/v3/calendars/gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com/events?singleEvents=true&key=AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
-					color: '#3D8215',   // an option!
-					textColor: 'white' // an option!
-				},
-				// Student Activities
-				{
-					url: 'https://www.googleapis.com/calendar/v3/calendars/l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com/events?singleEvents=true&key=AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
-					color: '#D16B05',   // an option!
-					textColor: 'white' // an option!
-				},
-				// Warrior Athletics
-				{
-					url: 'https://www.googleapis.com/calendar/v3/calendars/d6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com/events?singleEvents=true&key=AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
-					color: '#060064',   // an option!
-					textColor: 'white' // an option!
-				}
+			// Academics
+			{
+				googleCalendarId: '0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com',
+				color: '#737373',  // an option!
+				textColor: 'white' // an option!
+			},
+			// Campus Rec
+			{
+				googleCalendarId: 'h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com',
+				color: '#227F63',  // an option!
+				textColor: 'white' // an option!
+			},
+			// Entertainment
+			{
+				googleCalendarId: 'm6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com',
+				color: '#871111',  // an option!
+				textColor: 'white' // an option!
+			},
+			// Residence Life
+			{
+				googleCalendarId: 'gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com',
+				color: '#3D8215',  // an option!
+				textColor: 'white' // an option!
+			},
+			// Student Activities
+			{
+				googleCalendarId: 'l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com',
+				color: '#D16B05',  // an option!
+				textColor: 'white' // an option!
+			},
+			// Warrior Athletics
+			{
+				googleCalendarId: 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com',
+				color: '#060064',  // an option!
+				textColor: 'white' // an option!
+			}
 			],
 			//Events in an alert (no URL functionality)
 			eventClick: function(calEvent, jsEvent, view) {
@@ -84,8 +84,10 @@
 				return false;
 			}
 		});
-		$('#calendar').fullCalendar('option', 'width', $(window).width());	
-		$('#calendar').fullCalendar('option', 'height', $(window).height());
+		
+		// Resize the calendar on load
+		//$('#calendar').fullCalendar('option', 'width', $(window).width());	
+		//$('#calendar').fullCalendar('option', 'height', $(window).height());
 	});
 	<!-- end setup the calendar -->
 	</script>
@@ -172,38 +174,19 @@
 						<h1>Events Categories</h1>
 						<form method="post" action="demoform.asp">
 							<fieldset class="ui-field-contain">
-								<label><input type="checkbox" data-mini="true" name="academicsCheckBox">Academics</label>
-								<label><input type="checkbox" data-mini="true" name="campusRecCheckBox">Campus Rec</label>
-								<label><input type="checkbox" data-mini="true" name="entertainmentCheckBox">Entertainment</label>
-								<label><input type="checkbox" data-mini="true" name="residenceLifeCheckBox">Residence Life</label>
-								<label><input type="checkbox" data-mini="true" name="studentActivitiesCheckBox">Student Activities</label>
-								<label><input type="checkbox" data-mini="true" name="warriorAthleticsCheckBox">Warrior Athletics</label>
+								<label><input type="checkbox" id="aca-check-box" onchange="checkAddress()" name="aca-check-box" data-mini="true">Academics</label>
+								<label><input type="checkbox" id="rec-check-box" onchange="checkAddress()" name="rec-check-box" data-mini="true">Campus Recreation</label>
+								<label><input type="checkbox" id="ent-check-box" onchange="checkAddress()" name="ent-check-box" data-mini="true">Entertainment</label>
+								<label><input type="checkbox" id="res-check-box" onchange="checkAddress()" name="res-check-box" data-mini="true">Residence Life</label>
+								<label><input type="checkbox" id="act-check-box" onchange="checkAddress()" name="act-check-box" data-mini="true">Student Activities</label>
+								<label><input type="checkbox" id="ath-check-box" onchange="checkAddress()" name="ath-check-box" data-mini="true">Warrior Athletics</label>
 							</fieldset>
 						</form>
 					</div>
 					<div data-mini="true" data-role="collapsible" data-iconpos="right">
-						<h1>Test1</h1>
+						<h1>Emergency Numbers</h1>
 						<form method="post" action="demoform.asp">
 							<fieldset class="ui-field-contain">
-								<label><input type="checkbox" data-mini="true" name="academicsCheckBox">Academics</label>
-								<label><input type="checkbox" data-mini="true" name="campusRecCheckBox">Campus Rec</label>
-								<label><input type="checkbox" data-mini="true" name="entertainmentCheckBox">Entertainment</label>
-								<label><input type="checkbox" data-mini="true" name="residenceLifeCheckBox">Residence Life</label>
-								<label><input type="checkbox" data-mini="true" name="studentActivitiesCheckBox">Student Activities</label>
-								<label><input type="checkbox" data-mini="true" name="warriorAthleticsCheckBox">Warrior Athletics</label>
-							</fieldset>
-						</form>
-					</div>
-					<div data-mini="true" data-role="collapsible" data-iconpos="right">
-						<h1>Test2</h1>
-						<form method="post" action="demoform.asp">
-							<fieldset class="ui-field-contain">
-								<label><input type="checkbox" data-mini="true" name="academicsCheckBox">Academics</label>
-								<label><input type="checkbox" data-mini="true" name="campusRecCheckBox">Campus Rec</label>
-								<label><input type="checkbox" data-mini="true" name="entertainmentCheckBox">Entertainment</label>
-								<label><input type="checkbox" data-mini="true" name="residenceLifeCheckBox">Residence Life</label>
-								<label><input type="checkbox" data-mini="true" name="studentActivitiesCheckBox">Student Activities</label>
-								<label><input type="checkbox" data-mini="true" name="warriorAthleticsCheckBox">Warrior Athletics</label>
 							</fieldset>
 						</form>
 					</div>
@@ -212,7 +195,7 @@
 		</div>
 		<div data-role="footer" data-position="fixed" style="text-align:center;">
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="#" data-rel="close" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline">DONE</a>
+				<a href="#" data-rel="close" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline">Done</a>
 			</div>
 		</div>
 	</div> 
