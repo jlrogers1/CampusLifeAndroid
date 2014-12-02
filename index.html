@@ -31,22 +31,27 @@
 			eventLimit: 4, // If you set a number it will hide the items
 			eventLimitText: "more", // Default is `more` (or "more" in the lang you pick in the option)
 			defaultView: 'month',			
+			
+			// Adjust window height on first render
+			height: $(window).height()-63,
+			
 			// Adjust calendar to changed window
 			windowResize: function(view) {	
 				$('#calendar').fullCalendar('option', 'height', $(window).height()-63);
-				$('#calendar').fullCalendar('option', 'width', $(window).width());
+				//$('#calendar').fullCalendar('option', 'width', $(window).width());
 				//alert('Resized to ' + $(window).width() + 'x' + $(window).height());
 			},
 			
+			// Get the date and dynamically change page header
 			viewRender: function(view) {
 				var element = document.getElementById("calendar-header");
 				var date = $("#calendar").fullCalendar('getDate');
 				element.innerHTML = date;
 			},
 			
-			height: $(window).height()-63,
 			// googleCalendarApiKey required post API v3
 			googleCalendarApiKey: 'AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
+			
 			eventSources: [
 			// Academics
 			{
@@ -85,11 +90,16 @@
 				textColor: 'white' // an option!
 			}
 			],
+			
 			//Events in an alert (no URL functionality)
 			eventClick: function(calEvent, jsEvent, view) {
 				alert(calEvent.title + '\n\n' + calEvent.description);
 				return false;
 			}
+		});
+		
+		$('#aca-check-box').change( function() {
+			alert("Nice Job");
 		});
 		
 		// Resize the calendar on load
@@ -180,12 +190,12 @@
 						<h1>Events Categories</h1>
 						<form method="post" action="demoform.asp">
 							<fieldset class="ui-field-contain">
-								<label><input type="checkbox" id="aca-check-box" onchange="checkAddress()" name="aca-check-box" data-mini="true">Academics</label>
-								<label><input type="checkbox" id="rec-check-box" onchange="checkAddress()" name="rec-check-box" data-mini="true">Campus Recreation</label>
-								<label><input type="checkbox" id="ent-check-box" onchange="checkAddress()" name="ent-check-box" data-mini="true">Entertainment</label>
-								<label><input type="checkbox" id="res-check-box" onchange="checkAddress()" name="res-check-box" data-mini="true">Residence Life</label>
-								<label><input type="checkbox" id="act-check-box" onchange="checkAddress()" name="act-check-box" data-mini="true">Student Activities</label>
-								<label><input type="checkbox" id="ath-check-box" onchange="checkAddress()" name="ath-check-box" data-mini="true">Warrior Athletics</label>
+								<label><input type="checkbox" id="aca-check-box" name="aca-check-box" data-mini="true">Academics</label>
+								<label><input type="checkbox" id="rec-check-box" name="rec-check-box" data-mini="true">Campus Recreation</label>
+								<label><input type="checkbox" id="ent-check-box" name="ent-check-box" data-mini="true">Entertainment</label>
+								<label><input type="checkbox" id="res-check-box" name="res-check-box" data-mini="true">Residence Life</label>
+								<label><input type="checkbox" id="act-check-box" name="act-check-box" data-mini="true">Student Activities</label>
+								<label><input type="checkbox" id="ath-check-box" name="ath-check-box" data-mini="true">Warrior Athletics</label>
 							</fieldset>
 						</form>
 					</div>
