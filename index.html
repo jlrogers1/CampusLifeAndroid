@@ -19,6 +19,44 @@
 	
 	<!-- setup the calendar -->
 	<script type='text/javascript'>
+	var eventSourceArray = [
+	// Academics
+	{
+		googleCalendarId: '0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com',
+		color: '#737373',  // an option!
+		textColor: 'white' // an option!
+	},
+	// Campus Rec
+	{
+		googleCalendarId: 'h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com',
+		color: '#227F63',  // an option!
+		textColor: 'white' // an option!
+	},
+	// Entertainment
+	{
+		googleCalendarId: 'm6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com',
+		color: '#871111',  // an option!
+		textColor: 'white' // an option!
+	},
+	// Residence Life
+	{
+		googleCalendarId: 'gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com',
+		color: '#3D8215',  // an option!
+		textColor: 'white' // an option!
+	},
+	// Student Activities
+	{
+		googleCalendarId: 'l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com',
+		color: '#D16B05',  // an option!
+		textColor: 'white' // an option!
+	},
+	// Warrior Athletics
+	{
+		googleCalendarId: 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com',
+		color: '#060064',  // an option!
+		textColor: 'white' // an option!
+	}];
+	
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
 			theme: true,
@@ -32,13 +70,14 @@
 			eventLimitText: "more", // Default is `more` (or "more" in the lang you pick in the option)
 			defaultView: 'month',			
 			
-			// Adjust window height on first render
+			// Adjust window size on first render
 			height: $(window).height()-63,
+			width: $(window).width(),
 			
 			// Adjust calendar to changed window
 			windowResize: function(view) {	
 				$('#calendar').fullCalendar('option', 'height', $(window).height()-63);
-				//$('#calendar').fullCalendar('option', 'width', $(window).width());
+				$('#calendar').fullCalendar('option', 'width', $(window).width());
 				//alert('Resized to ' + $(window).width() + 'x' + $(window).height());
 			},
 			
@@ -52,44 +91,7 @@
 			// googleCalendarApiKey required post API v3
 			googleCalendarApiKey: 'AIzaSyASiprsGk5LMBn1eCRZbupcnC1RluJl_q0',
 			
-			eventSources: [
-			// Academics
-			{
-				googleCalendarId: '0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com',
-				color: '#737373',  // an option!
-				textColor: 'white' // an option!
-			},
-			// Campus Rec
-			{
-				googleCalendarId: 'h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com',
-				color: '#227F63',  // an option!
-				textColor: 'white' // an option!
-			},
-			// Entertainment
-			{
-				googleCalendarId: 'm6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com',
-				color: '#871111',  // an option!
-				textColor: 'white' // an option!
-			},
-			// Residence Life
-			{
-				googleCalendarId: 'gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com',
-				color: '#3D8215',  // an option!
-				textColor: 'white' // an option!
-			},
-			// Student Activities
-			{
-				googleCalendarId: 'l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com',
-				color: '#D16B05',  // an option!
-				textColor: 'white' // an option!
-			},
-			// Warrior Athletics
-			{
-				googleCalendarId: 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com',
-				color: '#060064',  // an option!
-				textColor: 'white' // an option!
-			}
-			],
+			eventSources: eventSourceArray,
 			
 			//Events in an alert (no URL functionality)
 			eventClick: function(calEvent, jsEvent, view) {
@@ -98,17 +100,64 @@
 			}
 		});
 		
-		$('#aca-check-box').change( function() {
-			alert("Nice Job");
-		});
-		
 		// Resize the calendar on load
 		//$('#calendar').fullCalendar('option', 'width', $(window).width());	
 		//$('#calendar').fullCalendar('option', 'height', $(window).height()-63);
 	});
 	<!-- end setup the calendar -->
-	</script>
 	
+    function toggleAca() {
+		if (document.getElementById('aca-check-box').checked) {
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[0] );
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', '0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com' );
+        }
+    };
+	
+	function toggleRec() {
+		if (document.getElementById('rec-check-box').checked) {
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[1] );
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com' );
+        }
+    };
+	
+	function toggleEnt() {
+		if (document.getElementById('ent-check-box').checked) {
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[2] );
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'm6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com' );
+        }
+    };
+	
+    function toggleRes() {
+		if (document.getElementById('res-check-box').checked) {
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[3] );
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com' );
+        }
+    };
+	
+	function toggleAct() {
+		if (document.getElementById('act-check-box').checked) {
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[4] );
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com' );
+        }
+    };
+	
+	function toggleAth() {
+		if (document.getElementById('ath-check-box').checked) {
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[5] );
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com' );
+        }
+    };	
+	
+	
+	
+	
+	</script>
 	<style>
 	<!-- http://jsfiddle.net/VNVqs/ -->
 	
@@ -140,17 +189,37 @@
 		overflow-x: hidden;
 		overflow-y: hidden;
 	}
-	<!--
-	#scroll-content-cal {
-		position:absolute; 
-		z-index:1;
-		top:0px; bottom:0px; left:0;
-		width:100%;
-		padding:0;
-		-webkit-overflow-scrolling:touch;
-		overflow:auto;
+	
+	#aca-label {
+		color:#FFF;
+		background:#737373;
 	}
-	-->
+	
+	#rec-label {
+		color:#FFF;
+		background:#227F63;
+	}
+	
+	#ent-label {
+		color:#FFF;
+		background:#871111;
+	}
+	
+	#res-label {
+		color:#FFF;
+		background:#3D8215;
+	}
+	
+	#act-label {
+		color:#FFF;
+		background:#D16B05;
+	}
+	
+	#ath-label {
+		color:#FFF;
+		background:#060064;
+	}
+
 	</style>
 </head>
 <body>
@@ -190,12 +259,12 @@
 						<h1>Events Categories</h1>
 						<form method="post" action="demoform.asp">
 							<fieldset class="ui-field-contain">
-								<label><input type="checkbox" id="aca-check-box" name="aca-check-box" data-mini="true">Academics</label>
-								<label><input type="checkbox" id="rec-check-box" name="rec-check-box" data-mini="true">Campus Recreation</label>
-								<label><input type="checkbox" id="ent-check-box" name="ent-check-box" data-mini="true">Entertainment</label>
-								<label><input type="checkbox" id="res-check-box" name="res-check-box" data-mini="true">Residence Life</label>
-								<label><input type="checkbox" id="act-check-box" name="act-check-box" data-mini="true">Student Activities</label>
-								<label><input type="checkbox" id="ath-check-box" name="ath-check-box" data-mini="true">Warrior Athletics</label>
+								<label id="aca-label"><input type="checkbox" id="aca-check-box" onchange=toggleAca() name="aca-check-box" checked data-mini="true">Academics</label>
+								<label id="rec-label"><input type="checkbox" id="rec-check-box" onchange=toggleRec() name="rec-check-box" checked data-mini="true">Campus Recreation</label>
+								<label id="ent-label"><input type="checkbox" id="ent-check-box" onchange=toggleEnt() name="ent-check-box" checked data-mini="true">Entertainment</label>
+								<label id="res-label"><input type="checkbox" id="res-check-box" onchange=toggleRes() name="res-check-box" checked data-mini="true">Residence Life</label>
+								<label id="act-label"><input type="checkbox" id="act-check-box" onchange=toggleAct() name="act-check-box" checked data-mini="true">Student Activities</label>
+								<label id="ath-label"><input type="checkbox" id="ath-check-box" onchange=toggleAth() name="ath-check-box" checked data-mini="true">Warrior Athletics</label>
 							</fieldset>
 						</form>
 					</div>
