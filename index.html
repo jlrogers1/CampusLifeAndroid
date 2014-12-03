@@ -119,6 +119,7 @@
 	<!-- setup check-boxes -->
     function toggleAca() {
 		if (document.getElementById('aca-check-box').checked) {
+			$('#calendar').fullCalendar( 'removeEventSource', '0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com' );
 			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[0] );
 		} else {
             $('#calendar').fullCalendar( 'removeEventSource', '0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com' );
@@ -127,6 +128,7 @@
 	
 	function toggleRec() {
 		if (document.getElementById('rec-check-box').checked) {
+			$('#calendar').fullCalendar( 'removeEventSource', 'h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com' );
 			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[1] );
 		} else {
             $('#calendar').fullCalendar( 'removeEventSource', 'h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com' );
@@ -135,6 +137,7 @@
 	
 	function toggleEnt() {
 		if (document.getElementById('ent-check-box').checked) {
+			$('#calendar').fullCalendar( 'removeEventSource', 'm6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com' );
 			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[2] );
 		} else {
             $('#calendar').fullCalendar( 'removeEventSource', 'm6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com' );
@@ -143,6 +146,7 @@
 	
     function toggleRes() {
 		if (document.getElementById('res-check-box').checked) {
+		    $('#calendar').fullCalendar( 'removeEventSource', 'gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com' );	
 			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[3] );
 		} else {
             $('#calendar').fullCalendar( 'removeEventSource', 'gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com' );
@@ -151,6 +155,7 @@
 	
 	function toggleAct() {
 		if (document.getElementById('act-check-box').checked) {
+			$('#calendar').fullCalendar( 'removeEventSource', 'l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com' );
 			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[4] );
 		} else {
             $('#calendar').fullCalendar( 'removeEventSource', 'l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com' );
@@ -159,6 +164,7 @@
 	
 	function toggleAth() {
 		if (document.getElementById('ath-check-box').checked) {
+			$('#calendar').fullCalendar( 'removeEventSource', 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com' );
 			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[5] );
 		} else {
             $('#calendar').fullCalendar( 'removeEventSource', 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com' );
