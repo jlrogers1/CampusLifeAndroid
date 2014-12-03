@@ -61,7 +61,7 @@
 		$('#calendar').fullCalendar({
 			theme: true,
 			header: {
-				left: '',//'prev,next today',
+				left: '',//'prev,next,today',
 				center: '',//'title',
 				right: ''//'month,agendaWeek,agendaDay'
 			},
@@ -85,7 +85,7 @@
 			viewRender: function(view) {
 				var element = document.getElementById("calendar-header");
 				var date = $("#calendar").fullCalendar('getDate');
-				element.innerHTML = date;
+				element.innerHTML = date.format('MMMM YYYY');
 			},
 			
 			// googleCalendarApiKey required post API v3
@@ -106,6 +106,21 @@
 	});
 	<!-- end setup the calendar -->
 	
+	<!-- setup nav buttons -->
+	function prevHandler() {
+		$('#calendar').fullCalendar('prev');
+	};
+	
+	function todayHandler() {
+		$('#calendar').fullCalendar('today');
+	};	
+	
+	function nextHandler() {
+		$('#calendar').fullCalendar('next');
+	};
+	<!-- end nav buttons -->
+	
+	<!-- setup check-boxes -->
     function toggleAca() {
 		if (document.getElementById('aca-check-box').checked) {
 			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[0] );
@@ -153,10 +168,7 @@
             $('#calendar').fullCalendar( 'removeEventSource', 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com' );
         }
     };	
-	
-	
-	
-	
+	<!-- end check-boxes -->
 	</script>
 	<style>
 	<!-- http://jsfiddle.net/VNVqs/ -->
@@ -240,9 +252,9 @@
 	<!-- footer -->
 	<div data-role="footer" data-position="fixed" style="text-align:center;">
 		<div data-role="controlgroup" data-type="horizontal">
-			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-inline">Prev</a>
-			<a href="#" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-inline">Today</a>
-			<a href="#" id="my-next-button" class="ui-btn ui-icon-arrow-r ui-btn-icon-right ui-btn-inline">Next</a>
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-inline" onclick="prevHandler();" id="prev-button">Prev</a>
+			<a href="#" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-inline" onclick="todayHandler();" id="today-button">Today</a>
+			<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right ui-btn-inline" onclick="nextHandler();" id="next-button">Next</a>
 		</div>
 	</div>
 	<!-- end footer -->
@@ -259,12 +271,12 @@
 						<h1>Events Categories</h1>
 						<form method="post" action="demoform.asp">
 							<fieldset class="ui-field-contain">
-								<label id="aca-label"><input type="checkbox" id="aca-check-box" onchange=toggleAca() name="aca-check-box" checked data-mini="true">Academics</label>
-								<label id="rec-label"><input type="checkbox" id="rec-check-box" onchange=toggleRec() name="rec-check-box" checked data-mini="true">Campus Recreation</label>
-								<label id="ent-label"><input type="checkbox" id="ent-check-box" onchange=toggleEnt() name="ent-check-box" checked data-mini="true">Entertainment</label>
-								<label id="res-label"><input type="checkbox" id="res-check-box" onchange=toggleRes() name="res-check-box" checked data-mini="true">Residence Life</label>
-								<label id="act-label"><input type="checkbox" id="act-check-box" onchange=toggleAct() name="act-check-box" checked data-mini="true">Student Activities</label>
-								<label id="ath-label"><input type="checkbox" id="ath-check-box" onchange=toggleAth() name="ath-check-box" checked data-mini="true">Warrior Athletics</label>
+								<label id="aca-label"><input type="checkbox" id="aca-check-box" onchange="toggleAca();" name="aca-check-box" checked data-mini="true">Academics</label>
+								<label id="rec-label"><input type="checkbox" id="rec-check-box" onchange="toggleRec();" name="rec-check-box" checked data-mini="true">Campus Recreation</label>
+								<label id="ent-label"><input type="checkbox" id="ent-check-box" onchange="toggleEnt();" name="ent-check-box" checked data-mini="true">Entertainment</label>
+								<label id="res-label"><input type="checkbox" id="res-check-box" onchange="toggleRes();" name="res-check-box" checked data-mini="true">Residence Life</label>
+								<label id="act-label"><input type="checkbox" id="act-check-box" onchange="toggleAct();" name="act-check-box" checked data-mini="true">Student Activities</label>
+								<label id="ath-label"><input type="checkbox" id="ath-check-box" onchange="toggleAth();" name="ath-check-box" checked data-mini="true">Warrior Athletics</label>
 							</fieldset>
 						</form>
 					</div>
