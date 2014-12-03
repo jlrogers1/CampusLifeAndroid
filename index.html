@@ -68,11 +68,7 @@
 			lang: 'en',
 			eventLimit: 4, // If you set a number it will hide the items
 			eventLimitText: "more", // Default is `more` (or "more" in the lang you pick in the option)
-			defaultView: 'month',			
-			
-			// Adjust window size on first render
-			height: $(window).height()-63,
-			width: $(window).width(),
+			defaultView: 'month',
 			
 			// Adjust calendar to changed window
 			windowResize: function(view) {	
@@ -101,8 +97,8 @@
 		});
 		
 		// Resize the calendar on load
-		//$('#calendar').fullCalendar('option', 'width', $(window).width());	
-		//$('#calendar').fullCalendar('option', 'height', $(window).height()-63);
+		$('#calendar').fullCalendar('option', 'width', $(window).width());	
+		$('#calendar').fullCalendar('option', 'height', $(window).height()-63);
 	});
 	<!-- end setup the calendar -->
 	
@@ -198,6 +194,8 @@
 		top:9px; bottom:0px; left:0;
 		width:100%;
 		background:#eee;
+		overflow-x:hidden;
+		overflow-y:hidden;
 	}
 	
 	#aca-label {
