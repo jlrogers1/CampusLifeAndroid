@@ -171,6 +171,74 @@
         }
     };	
 	<!-- end check-boxes -->
+	
+	<!-- setup buttons -->
+    function toggleAcaBtn() {
+		if (document.getElementById('aca-check-box').checked==false) {
+			$('#calendar').fullCalendar( 'removeEventSource', '0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com' );
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[0] );
+			document.getElementById('aca-check-box').checked=true;
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', '0rn5mgclnhc7htmh0ht0cc5pgk@group.calendar.google.com' );
+			document.getElementById('aca-check-box').checked=false;
+        }
+    };
+	
+	function toggleRecBtn() {
+		if (document.getElementById('rec-check-box').checked==false) {
+			$('#calendar').fullCalendar( 'removeEventSource', 'h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com' );
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[1] );
+			document.getElementById('rec-check-box').checked=true;
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'h4j413d3q0uftb2crk0t92jjlc@group.calendar.google.com' );
+			document.getElementById('rec-check-box').checked=false;
+        }
+    };
+	
+	function toggleEntBtn() {
+		if (document.getElementById('ent-check-box').checked==false) {
+			$('#calendar').fullCalendar( 'removeEventSource', 'm6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com' );
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[2] );
+			document.getElementById('ent-check-box').checked=true;
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'm6h2d5afcjfnmaj8qr7o96q89c@group.calendar.google.com' );
+			document.getElementById('ent-check-box').checked=false;
+        }
+    };
+	
+    function toggleResBtn() {
+		if (document.getElementById('res-check-box').checked==false) {
+		    $('#calendar').fullCalendar( 'removeEventSource', 'gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com' );	
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[3] );
+			document.getElementById('res-check-box').checked=true;
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'gqv0n6j15pppdh0t8adgc1n1ts@group.calendar.google.com' );
+			document.getElementById('res-check-box').checked=true;
+        }
+    };
+	
+	function toggleActBtn() {
+		if (document.getElementById('act-check-box').checked==false) {
+			$('#calendar').fullCalendar( 'removeEventSource', 'l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com' );
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[4] );
+			document.getElementById('act-check-box').checked=true;
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'l9qpkh5gb7dhjqv8nm0mn098fk@group.calendar.google.com' );
+			document.getElementById('act-check-box').checked=false;
+        }
+    };
+	
+	function toggleAthBtn() {
+		if (document.getElementById('ath-check-box').checked==false) {
+			$('#calendar').fullCalendar( 'removeEventSource', 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com' );
+			$('#calendar').fullCalendar( 'addEventSource', eventSourceArray[5] );
+			document.getElementById('ath-check-box').checked=true;
+		} else {
+            $('#calendar').fullCalendar( 'removeEventSource', 'd6jbgjhudph2mpef1cguhn4g9g@group.calendar.google.com' );
+			document.getElementById('ath-check-box').checked=false;
+        }
+    };	
+	<!-- end buttons -->
 	</script>
 	<style>
 	<!-- http://jsfiddle.net/VNVqs/ -->
@@ -256,11 +324,25 @@
 	
 	<!-- footer -->
 	<div data-role="footer" data-position="fixed" style="text-align:center;">
-		<div data-role="controlgroup" data-type="horizontal">
+		<div data-role="navbar">
+			<ul>
+				<li><a onclick="toggleAcaBtn();" id="aca-label" href="#">Academics</a></li>
+				<li><a onclick="toggleRecBtn();" id="rec-label" href="#">Campus Recreation</a></li>
+				<li><a onclick="toggleEntBtn();" id="ent-label" href="#">Entertainment</a></li>
+			</ul>
+		</div>
+		<div data-role="navbar">
+			<ul>
+				<li><a onclick="toggleResBtn();" id="res-label" href="#">Residence Life</a></li>
+				<li><a onclick="toggleActBtn();" id="act-label" href="#">Student Activities</a></li>
+				<li><a onclick="toggleAthBtn();" id="ath-label" href="#">Warrior Athletics</a></li>
+			</ul>
+		</div>
+		<!--<div data-role="controlgroup" data-type="horizontal">
 			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-inline" onclick="prevHandler();" id="prev-button">Prev</a>
 			<a href="#" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-inline" onclick="todayHandler();" id="today-button">Today</a>
 			<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right ui-btn-inline" onclick="nextHandler();" id="next-button">Next</a>
-		</div>
+		</div>-->
 	</div>
 	<!-- end footer -->
 	
@@ -276,12 +358,12 @@
 						<h1>Events Categories</h1>
 						<form method="post" action="demoform.asp">
 							<fieldset class="ui-field-contain">
-								<label id="aca-label"><input type="checkbox" id="aca-check-box" onchange="toggleAca();" name="aca-check-box" checked data-mini="true">Academics</label>
-								<label id="rec-label"><input type="checkbox" id="rec-check-box" onchange="toggleRec();" name="rec-check-box" checked data-mini="true">Campus Recreation</label>
-								<label id="ent-label"><input type="checkbox" id="ent-check-box" onchange="toggleEnt();" name="ent-check-box" checked data-mini="true">Entertainment</label>
-								<label id="res-label"><input type="checkbox" id="res-check-box" onchange="toggleRes();" name="res-check-box" checked data-mini="true">Residence Life</label>
-								<label id="act-label"><input type="checkbox" id="act-check-box" onchange="toggleAct();" name="act-check-box" checked data-mini="true">Student Activities</label>
-								<label id="ath-label"><input type="checkbox" id="ath-check-box" onchange="toggleAth();" name="ath-check-box" checked data-mini="true">Warrior Athletics</label>
+								<label><input type="checkbox" id="aca-check-box" onchange="toggleAca();" name="aca-check-box" checked="true" data-mini="true">Academics</label>
+								<label><input type="checkbox" id="rec-check-box" onchange="toggleRec();" name="rec-check-box" checked="true" data-mini="true">Campus Recreation</label>
+								<label><input type="checkbox" id="ent-check-box" onchange="toggleEnt();" name="ent-check-box" checked="true" data-mini="true">Entertainment</label>
+								<label><input type="checkbox" id="res-check-box" onchange="toggleRes();" name="res-check-box" checked="true" data-mini="true">Residence Life</label>
+								<label><input type="checkbox" id="act-check-box" onchange="toggleAct();" name="act-check-box" checked="true" data-mini="true">Student Activities</label>
+								<label><input type="checkbox" id="ath-check-box" onchange="toggleAth();" name="ath-check-box" checked="true" data-mini="true">Warrior Athletics</label>
 							</fieldset>
 						</form>
 					</div>
