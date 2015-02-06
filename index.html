@@ -7,6 +7,12 @@
 	<link href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
 	<script type="text/javascript" src="js/jquery-2.1.1/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		document.addEventListener("deviceready", onDeviceReady, false);
+		function onDeviceReady() {
+			navigator.splashscreen.show();
+		}
+	</script>
 	<style type="text/css">
 	html, body {
 	    margin:0;
@@ -48,13 +54,13 @@
 <body>
 	<div id="container">
 		<div id="body">
-			<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=0rn5mgclnhc7htmh0ht0cc5pgk%40group.calendar.google.com&amp;color=%23125A12&amp;src=h4j413d3q0uftb2crk0t92jjlc%40group.calendar.google.com&amp;color=%23182C57&amp;src=m6h2d5afcjfnmaj8qr7o96q89c%40group.calendar.google.com&amp;color=%238C500B&amp;src=gqv0n6j15pppdh0t8adgc1n1ts%40group.calendar.google.com&amp;color=%23B1365F&amp;src=l9qpkh5gb7dhjqv8nm0mn098fk%40group.calendar.google.com&amp;color=%2323164E&amp;src=d6jbgjhudph2mpef1cguhn4g9g%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FLos_Angeles" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+			<iframe src="http://www.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=1&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=0rn5mgclnhc7htmh0ht0cc5pgk%40group.calendar.google.com&amp;color=%23125A12&amp;src=h4j413d3q0uftb2crk0t92jjlc%40group.calendar.google.com&amp;color=%23182C57&amp;src=m6h2d5afcjfnmaj8qr7o96q89c%40group.calendar.google.com&amp;color=%238C500B&amp;src=gqv0n6j15pppdh0t8adgc1n1ts%40group.calendar.google.com&amp;color=%23B1365F&amp;src=l9qpkh5gb7dhjqv8nm0mn098fk%40group.calendar.google.com&amp;color=%2323164E&amp;src=d6jbgjhudph2mpef1cguhn4g9g%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FLos_Angeles" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
 		</div>
 		<div id="footer">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="index.html" class="ui-btn-active ui-state-persist">Calendar</a></li>
-					<li><a href="lcsc.html">LCSC</a></li>
+					<!--<li><a href="lcsc.html">LCSC</a></li>-->
 					<li><a href="athl.html">Athletics</a></li>
 					<li><a href="emer.html">Emergency</a></li>
 				</ul>
